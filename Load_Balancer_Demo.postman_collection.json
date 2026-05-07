@@ -1,0 +1,134 @@
+{
+  "info": {
+    "_postman_id": "c13d8d64-1e0e-473d-82c8-88849b29e685",
+    "name": "Load Balancer Flow",
+    "description": "A demonstration of the Enterprise Load Balancer API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. System Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Route Request",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-forwarded-for",
+            "value": "192.168.1.10",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/route/request",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "route",
+            "request"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Metrics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/metrics",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "metrics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Node Health Snapshot",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/health/nodes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "health",
+            "nodes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Simulate Traffic Spike",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"requests\": 50\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/simulate/spike",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "simulate",
+            "spike"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
