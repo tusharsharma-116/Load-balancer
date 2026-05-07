@@ -7,8 +7,8 @@ import { Node } from '../types';
 export type StrategyType = 'ConsistentHashing' | 'LeastConnections' | 'RoundRobin';
 
 export class StrategyManager {
-  private strategies: Map<string, ILoadBalancingStrategy>;
-  private activeStrategyName: string;
+  public strategies: Map<StrategyType, ILoadBalancingStrategy>;
+  private activeStrategyName: StrategyType;
 
   constructor(defaultStrategy: StrategyType = 'ConsistentHashing') {
     this.strategies = new Map();
@@ -21,7 +21,7 @@ export class StrategyManager {
   }
 
   public registerStrategy(strategy: ILoadBalancingStrategy): void {
-    this.strategies.set(strategy.name, strategy);
+    this.strategies.set(strategy.name as StrategyType, strategy);
   }
 
   public setActiveStrategy(name: StrategyType): void {

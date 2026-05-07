@@ -53,16 +53,16 @@ export class LoadBalancerController {
     
     // Ensure default values
     const newNode: Node = {
-      weight: 1,
-      status: 'active',
-      healthScore: 100,
-      activeConnections: 0,
-      requestCount: 0,
-      averageLatency: 0,
-      failureCount: 0,
-      recoveryState: false,
-      lastHeartbeat: Date.now(),
       ...node,
+      weight: node.weight ?? 1,
+      status: node.status ?? 'active',
+      healthScore: node.healthScore ?? 100,
+      activeConnections: node.activeConnections ?? 0,
+      requestCount: node.requestCount ?? 0,
+      averageLatency: node.averageLatency ?? 0,
+      failureCount: node.failureCount ?? 0,
+      recoveryState: node.recoveryState ?? false,
+      lastHeartbeat: node.lastHeartbeat ?? Date.now(),
     };
 
     engine.addNode(newNode);
@@ -71,8 +71,12 @@ export class LoadBalancerController {
 
   public static removeNode(req: Request, res: Response): void {
     const { id } = req.params;
-    engine.removeNode(id);
-    res.json({ message: `Node ${id} removed successfully` });
+    if (typeof id === 'string') {
+      engine.removeNode(id);
+      res.json({ message: `Node ${id} removed successfully` });
+    } else {
+      res.status(400).json({ error: 'Bad Request', message: 'Invalid node ID' });
+    }
   }
 
   // --- Metrics Endpoints ---
@@ -115,7 +119,7 @@ export class LoadBalancerController {
   // --- Configuration Endpoints ---
   public static setStrategy(req: Request, res: Response): void {
     const { strategy } = req.body;
-    const validStrategies: StrategyType[] = ['ConsistentHashing', 'WeightedConsistentHashing', 'LeastConnections', 'RoundRobin'];
+    const validStrategies = ['ConsistentHashing', 'LeastConnections', 'RoundRobin'];
     
     if (!validStrategies.includes(strategy as StrategyType)) {
       res.status(400).json({ error: 'Bad Request', message: 'Invalid strategy type' });

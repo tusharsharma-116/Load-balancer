@@ -56,4 +56,8 @@ The load balancer will start on `http://localhost:3000`. By default, the engine 
 | GET | `/api/v1/metrics` | Fetch sliding-window metrics (req/sec, latency, failovers). |
 
 ## Demo
-A Postman collection (`Load_Balancer_Demo.postman_collection.json`) is included in the root of the repository. Import this file into Postman to explore and test the complete routing flow.
+A video demonstration of the Load Balancer API flow is available below:
+
+![CLI Demo](demo_recording.webp)
+
+A Postman collection (`Load_Balancer_Demo.postman_collection.json`) is also included in the root of the repository. Import this file into Postman to explore and test the complete routing flow yourself.
