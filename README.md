@@ -55,3 +55,11 @@ The load balancer will start on `http://localhost:3000`. By default, the engine 
 | GET | `/api/v1/nodes` | Get detailed information about all nodes in the pool. |
 | GET | `/api/v1/metrics` | Fetch sliding-window metrics (req/sec, latency, failovers). |
 
+## Demo
+
+A video demonstration of the Load Balancer API flow is available below:
+
+<video src="https://github.com/tusharsharma-116/Load-balancer/raw/main/Demo.mp4" controls="controls" muted="muted" class="d-block rounded-bottom-2 border-top width-fit" style="max-height:640px; min-height: 200px">
+</video>
+
+A Postman collection (`Load_Balancer_Demo.postman_collection.json`) is also included in the root of the repository. Import this file into Postman to explore and test the complete routing flow yourself.
