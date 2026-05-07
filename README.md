@@ -59,6 +59,6 @@ The load balancer will start on `http://localhost:3000`. By default, the engine 
 
 A video demonstration of the Load Balancer API flow is available below:
 
-<video src="Demo.mp4" autoplay loop muted playsinline controls="controls" width="100%"></video>
+[📥 Click here to download and view the Demo Video](https://github.com/tusharsharma-116/Load-balancer/raw/main/Demo.mp4)
 
 A Postman collection (`Load_Balancer_Demo.postman_collection.json`) is also included in the root of the repository. Import this file into Postman to explore and test the complete routing flow yourself.
